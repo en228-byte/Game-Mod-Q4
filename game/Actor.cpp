@@ -552,7 +552,7 @@ void idActor::Spawn( void ) {
 // RAVEN END
 
 	// spawn any attachments we might have
-	const idKeyValue *kv = spawnArgs.MatchPrefix( "def_attach", NULL );
+	/*const idKeyValue *kv = spawnArgs.MatchPrefix( "def_attach", NULL );
 	while ( kv ) {
 		idDict args;
 
@@ -571,7 +571,7 @@ void idActor::Spawn( void ) {
 			Attach( ent );
 		}
 		kv = spawnArgs.MatchPrefix( "def_attach", kv );
-	}
+	}*/
 
 	SetupDamageGroups();
 

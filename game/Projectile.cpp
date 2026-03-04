@@ -63,8 +63,8 @@ idProjectile::idProjectile( void ) {
 
 	flyEffect			= NULL;
 	flyEffectAttenuateSpeed = 0.0f;
-	bounceCount			= 0;
-	hitCount			= 0;
+	bounceCount			= 3;
+	hitCount			= 3;
 	state				= SPAWNED;
 	
 	fl.networkSync		= true;

@@ -85,7 +85,7 @@ rvMonsterLightTank::Spawn
 */
 void rvMonsterLightTank::Spawn ( void ) {
 //	damagedThreshold = spawnArgs.GetInt ( "health_damagedThreshold" );
-	flamethrowerHealth	= spawnArgs.GetInt ( "flamethrowerHealth", "160" );
+	/*flamethrowerHealth = spawnArgs.GetInt("flamethrowerHealth", "160");
 	chargeDebounce = 0;
 	
 	actionFlameThrower.Init ( spawnArgs, "action_flameThrower", "Torso_FlameThrower", AIACTIONF_ATTACK );
@@ -97,6 +97,10 @@ void rvMonsterLightTank::Spawn ( void ) {
 	{
 		mPostWeaponDestroyed.Init( func );
 	}
+	
+	const char  *func;
+	mPostWeaponDestroyed.Init(func);
+	*/
 }
 
 /*
@@ -145,7 +149,7 @@ rvMonsterLightTank::FilterTactical
 ================
 */
 int rvMonsterLightTank::FilterTactical ( int availableTactical ) {
-	if ( flamethrowerHealth > 0 ) { 
+	/*if ( flamethrowerHealth > 0 ) { 
 		// Only let the light tank use ranged tactical when he is really far from his enemy
 		if ( !enemy.range || enemy.range < combat.attackRange[1] ) {
 			availableTactical &= ~(AITACTICAL_RANGED_BITS);
@@ -156,7 +160,7 @@ int rvMonsterLightTank::FilterTactical ( int availableTactical ) {
 		availableTactical &= ~(AITACTICAL_MELEE_BIT);
 	}
 	
-	return idAI::FilterTactical( availableTactical );
+	return idAI::FilterTactical( availableTactical );*/
 }
 
 /*

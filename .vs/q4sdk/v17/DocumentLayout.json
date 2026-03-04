@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\ai\\Monster_LightTank.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\ai\\Monster_LightTank.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Actor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\Actor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\gamesys\\SysCmds.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\gamesys\\SysCmds.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Projectile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\Projectile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Actor.cpp",
+              "DocumentMoniker": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Actor.cpp",
+              "RelativeDocumentMoniker": "game\\Actor.cpp",
+              "ToolTip": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Actor.cpp",
+              "RelativeToolTip": "game\\Actor.cpp",
+              "ViewState": "AgIAABwCAAAAAAAAAAAAAD0CAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-04T17:16:30.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Monster_LightTank.cpp",
+              "DocumentMoniker": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\ai\\Monster_LightTank.cpp",
+              "RelativeDocumentMoniker": "game\\ai\\Monster_LightTank.cpp",
+              "ToolTip": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\ai\\Monster_LightTank.cpp",
+              "RelativeToolTip": "game\\ai\\Monster_LightTank.cpp",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAtwJoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-04T15:26:36.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Player.cpp",
+              "RelativeDocumentMoniker": "game\\Player.cpp",
+              "ToolTip": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Player.cpp",
+              "RelativeToolTip": "game\\Player.cpp",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAHkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-04T15:12:33.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SysCmds.cpp",
+              "DocumentMoniker": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\gamesys\\SysCmds.cpp",
+              "RelativeDocumentMoniker": "game\\gamesys\\SysCmds.cpp",
+              "ToolTip": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\gamesys\\SysCmds.cpp",
+              "RelativeToolTip": "game\\gamesys\\SysCmds.cpp",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAIwLsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-23T00:41:52.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Projectile.cpp",
+              "DocumentMoniker": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Projectile.cpp",
+              "RelativeDocumentMoniker": "game\\Projectile.cpp",
+              "ToolTip": "C:\\Users\\enjol\\Desktop\\njit\\sp26\\gameMod\\Game-Mod-Q4\\game\\Projectile.cpp",
+              "RelativeToolTip": "game\\Projectile.cpp",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAAMsGAAB+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-16T01:54:38.993Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
