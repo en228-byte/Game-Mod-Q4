@@ -2,6 +2,7 @@
 // bdube: note that this file is no longer merged with Doom3 updates
 //
 // MERGE_DATE 09/30/2004
+#include <cstdlib>
 
 #include "../idlib/precompiled.h"
 #pragma hdrstop
@@ -346,6 +347,8 @@ const idEventDef EV_JointCrawlEffect ( "jointCrawlEffect","sf" );
 
 // RAVEN END
 
+const idEventDef EV_SetSoccerStats( "setSoccerStats" );
+
 CLASS_DECLARATION( idAFEntity_Gibbable, idActor )
 	EVENT( AI_EnableEyeFocus,			idActor::Event_EnableEyeFocus )
 	EVENT( AI_DisableEyeFocus,			idActor::Event_DisableEyeFocus )
@@ -397,6 +400,8 @@ CLASS_DECLARATION( idAFEntity_Gibbable, idActor )
 // MCG: script-callable joint crawl effect
 	EVENT( EV_JointCrawlEffect,			idActor::Event_JointCrawlEffect )
 // RAVEN END
+
+	EVENT( EV_SetSoccerStats,				idActor::Event_SetSoccerStats)
 
 END_CLASS
 
@@ -3790,6 +3795,16 @@ void idActor::Event_JointCrawlEffect ( const char *effectKeyName, float crawlSec
 			PostEventMS( &EV_JointCrawlEffect, 100, effectKeyName, crawlSecs );
 		}
 	}
+}
+
+void idActor::Event_SetSoccerStats ( void ){
+	runSpeed = rand() % 101 / 100.00;
+	offense = rand() % 101 / 100.00;
+	defense = rand() % 101 / 100.00;
+	shooting = rand() % 101 / 100.00;
+	dribbling = rand() % 101 / 100.00;
+	passing = rand() % 101 / 100.00;
+	gameLocal.Printf("Stats: r-%f, o-%f, d-%f, s-%f, d-%f, p-%f", runSpeed, offense, defense, shooting, dribbling, passing);
 }
 
 idEntity* idActor::GetGroundElevator( idEntity* testElevator ) const {

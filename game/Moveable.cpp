@@ -26,6 +26,7 @@ const idEventDef EV_IsAtRest( "isAtRest", NULL, 'd' );
 const idEventDef EV_CanDamage( "canDamage", "f" );
 const idEventDef EV_SetHealth( "setHealth", "f" );
 const idEventDef EV_RadiusDamage( "<radiusDamage>", "es" );
+const idEventDef EV_SoccerBall("soccerBall");
 
 CLASS_DECLARATION( idDamagable, idMoveable )
 	EVENT( EV_Activate,					idMoveable::Event_Activate )
@@ -35,6 +36,7 @@ CLASS_DECLARATION( idDamagable, idMoveable )
 	EVENT( EV_CanDamage,				idMoveable::Event_CanDamage )
 	EVENT( EV_SetHealth,				idMoveable::Event_SetHealth )
 	EVENT( EV_RadiusDamage,				idMoveable::Event_RadiusDamage )
+	EVENT( EV_SoccerBall,				idMoveable::Event_SoccerBall)
 END_CLASS
 
 static const float BOUNCE_SOUND_MIN_VELOCITY	= 80.0f;
@@ -180,6 +182,10 @@ void idMoveable::Spawn( void ) {
 
 	if ( spawnArgs.GetBool( "nonsolid" ) ) {
 		BecomeNonSolid();
+	}
+
+	if (spawnArgs.GetBool("soccerBall")) {
+		SoccerBall();
 	}
 
 	allowStep = spawnArgs.GetBool( "allowStep", "1" );
@@ -461,6 +467,16 @@ void idMoveable::BecomeNonSolid( void ) {
 	physicsObj.SetContents( CONTENTS_CORPSE | CONTENTS_RENDERMODEL );
 	physicsObj.SetClipMask( MASK_SOLID | CONTENTS_CORPSE | CONTENTS_MOVEABLECLIP );
 }
+/*
+================
+idMoveable::SoccerBall
+================
+*/
+void idMoveable::SoccerBall(void) {
+	//physicsObj.SetBouncyness(10);
+	//physicsObj.SetMass()
+
+}
 
 /*
 ================
@@ -676,6 +692,14 @@ idMoveable::Event_RadiusDamage
 */
 void idMoveable::Event_RadiusDamage( idEntity *attacker, const char* splash ) {
 	gameLocal.RadiusDamage( GetPhysics()->GetOrigin(), this, attacker, this, this, splash );
+}
+/*
+================
+idMoveable::Event_SoccerBall
+================
+*/
+void idMoveable::Event_SoccerBall(void) {
+	return;
 }
 
 /*

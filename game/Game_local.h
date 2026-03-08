@@ -868,6 +868,7 @@ public:
 	// mekberg: so ban list can be populated outside of multiplayer game
 	void					PopulateBanList( idUserInterface* hud );
 // RAVEN END
+	void OpenModHelp(void);
 
 // RAVEN BEGIN
 // mwhitlock: Dynamic memory consolidation

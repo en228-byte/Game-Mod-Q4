@@ -1072,6 +1072,26 @@ void Cmd_Teleport_f( const idCmdArgs &args ) {
 
 	player->Teleport( origin, angles, ent );
 }
+/*
+=================
+Cmd_Locate_f
+=================
+*/
+void Cmd_Locate_f(const idCmdArgs& args) {
+	idVec3		origin;
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+	if (!player) {
+		return;
+		//error
+	}
+
+	origin = player->GetEyePosition();
+	gameLocal.Printf("Location: (%f, %f, %f)", origin.x, origin.y, origin.z);
+}
+
+
 
 /*
 =================
@@ -2929,6 +2949,13 @@ void Cmd_ToggleBuyMenu_f( const idCmdArgs& args ) {
 		gameLocal.mpGame.OpenLocalBuyMenu();
 	}
 }
+void Cmd_ToggleModHelp_f(const idCmdArgs& args) {
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (!player) {
+		return;
+	}
+		gameLocal.OpenModHelp();
+}
 
 void Cmd_BuyItem_f( const idCmdArgs& args ) {
 	idPlayer* player = gameLocal.GetLocalPlayer();
@@ -3076,6 +3103,8 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "getviewpos",			Cmd_GetViewpos_f,			CMD_FL_GAME|CMD_FL_CHEAT,	"prints the current view position" );
 	cmdSystem->AddCommand( "setviewpos",			Cmd_SetViewpos_f,			CMD_FL_GAME|CMD_FL_CHEAT,	"sets the current view position" );
 	cmdSystem->AddCommand( "teleport",				Cmd_Teleport_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"teleports the player to an entity location", idGameLocal::ArgCompletion_EntityName );
+	cmdSystem->AddCommand( "locate",				Cmd_Locate_f,				CMD_FL_GAME,				"get player location", idGameLocal::ArgCompletion_EntityName );
+	cmdSystem->AddCommand( "getHelp",				Cmd_ToggleModHelp_f,			CMD_FL_GAME,				"opens up a help screen for the Blue Lock mod");
 	cmdSystem->AddCommand( "trigger",				Cmd_Trigger_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"triggers an entity", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "spawn",					Cmd_Spawn_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"spawns a game entity", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF> );
 	cmdSystem->AddCommand( "damage",				Cmd_Damage_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"apply damage to an entity", idGameLocal::ArgCompletion_EntityName );

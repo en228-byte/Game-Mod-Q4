@@ -8506,3 +8506,25 @@ void operator delete[]( void *p ) {
 #endif	// #else #ifdef ID_DEBUG_MEMORY
 #endif	// #if defined(ID_REDIRECT_NEWDELETE) || defined(_RV_MEM_SYS_SUPPORT)
 // RAVEN END
+
+/*
+================
+OpenModHelp
+================
+*/
+void idGameLocal::OpenModHelp(void)
+{
+	// Buy menu work in progress
+	//if ( gameLocal.mpGame.GetCurrentMenu() == 4 )
+	//{	
+	//		return;
+	//}
+	/*
+	* if (currentMenu == 4)
+		return; // Already open
+
+	gameLocal.sessionCommand = "game_startmenu";
+	gameLocal.mpGame.nextMenu = 4;
+	*/
+	gameLocal.Printf("worked");
+}

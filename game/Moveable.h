@@ -64,6 +64,7 @@ protected:
 
 	const idMaterial *		GetRenderModelMaterial( void ) const;
 	void					BecomeNonSolid( void );
+	void					SoccerBall( void );
 	void					InitInitialSpline( int startTime );
 	bool					FollowInitialSplinePath( void );
 
@@ -74,6 +75,7 @@ protected:
 	void					Event_CanDamage ( float enable );
 	void					Event_SetHealth ( float newHealth );
 	void					Event_RadiusDamage( idEntity *attacker, const char* splash );
+	void					Event_SoccerBall(void);
 };
 
 

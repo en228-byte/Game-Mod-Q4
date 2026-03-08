@@ -58,6 +58,8 @@ extern const idEventDef	AI_JumpDown;
 extern const idEventDef AI_SetLeader;
 // RAVEN END
 
+extern const idEventDef EV_SetSoccerStats;
+
 class idAnimState {
 public:
 
@@ -345,6 +347,22 @@ protected:
 	void					FlashlightUpdate	( bool forceOn = false );
 	void					InitDeathPush		( const idVec3& dir, int location, const idDict* damageDict, float pushScale = 1.0f );
 	void					DeathPush			( void );
+	
+//soccer stats. floats from 0.00 to 1.00
+	/*
+		runspeed = run speed
+		offense = rate of trying  to take ball
+		defense = rate of trying to block shots
+		passing = rate of passing to teammate
+		shooting = likelyhood to shoot
+		dribbling = skill at keeping ball
+	*/
+	float runSpeed;
+	float offense;
+	float defense;
+	float passing;
+	float shooting;
+	float dribbling;
 
 	// Add some dynamic externals for debugging
 	virtual void			GetDebugInfo		( debugInfoProc_t proc, void* userData );
@@ -398,6 +416,7 @@ private:
 	void					Event_DamageOverTime ( int endTime, int interval, idEntity *inflictor, idEntity *attacker, idVec3 &dir, const char *damageDefName, const float damageScale, int location );
 	virtual void			Event_DamageOverTimeEffect	( int endTime, int interval, const char *damageDefName );
 	void					Event_JointCrawlEffect ( const char *effectKeyName, float crawlSecs );
+	void					Event_SetSoccerStats	( void );
 
 	CLASS_STATES_PROTOTYPE ( idActor );
 

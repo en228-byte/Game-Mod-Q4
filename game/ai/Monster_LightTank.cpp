@@ -60,6 +60,14 @@ private:
 	stateResult_t		State_Torso_RangedAttack		( const stateParms_t& parms );
 	stateResult_t		State_Torso_PowerUp				( const stateParms_t& parms );
 
+	//soccer states
+	stateResult_t		State_Soccer_Running					( const stateParms_t& parms );
+	stateResult_t		State_Soccer_Attacking					( const stateParms_t& parms );
+	stateResult_t		State_Soccer_Defending					( const stateParms_t& parms );
+	stateResult_t		State_Soccer_Shooting					( const stateParms_t& parms );
+	stateResult_t		State_Soccer_Dribbling					( const stateParms_t& parms );
+	stateResult_t		State_Soccer_Passing					( const stateParms_t& parms );
+
 	rvScriptFuncUtility		mPostWeaponDestroyed;		// script to run after flamethrower is destroyed
 
 	CLASS_STATES_PROTOTYPE ( rvMonsterLightTank );
@@ -149,18 +157,18 @@ rvMonsterLightTank::FilterTactical
 ================
 */
 int rvMonsterLightTank::FilterTactical ( int availableTactical ) {
-	/*if ( flamethrowerHealth > 0 ) { 
+	if ( flamethrowerHealth > 0 ) { 
 		// Only let the light tank use ranged tactical when he is really far from his enemy
 		if ( !enemy.range || enemy.range < combat.attackRange[1] ) {
-			availableTactical &= ~(AITACTICAL_RANGED_BITS);
+			//availableTactical &= ~(AITACTICAL_RANGED_BITS);
 		}
 	}
 	if ( chargeDebounce > gameLocal.GetTime() )
 	{//don't charge again any time soon
-		availableTactical &= ~(AITACTICAL_MELEE_BIT);
+		//availableTactical &= ~(AITACTICAL_MELEE_BIT);
 	}
 	
-	return idAI::FilterTactical( availableTactical );*/
+	return idAI::FilterTactical( availableTactical );
 }
 
 /*
@@ -178,8 +186,8 @@ void rvMonsterLightTank::OnTacticalChange ( aiTactical_t oldTactical ) {
 			break;
 
 		default:
-			actionFlameThrower.fl.disabled = false;
-			actionRangedAttack.fl.disabled = false;
+			actionFlameThrower.fl.disabled = true;
+			actionRangedAttack.fl.disabled = true;
 			break;
 	}
 }
@@ -470,6 +478,13 @@ CLASS_STATES_DECLARATION ( rvMonsterLightTank )
 	STATE ( "Torso_Pain",				rvMonsterLightTank::State_Torso_Pain )
 	STATE ( "Torso_RangedAttack",		rvMonsterLightTank::State_Torso_RangedAttack )
 	STATE ( "Torso_PowerUp",			rvMonsterLightTank::State_Torso_PowerUp )
+	//soccer
+	STATE ( "Soccer_Running",			rvMonsterLightTank::State_Soccer_Running)
+	STATE ( "Soccer_Atacking",			rvMonsterLightTank::State_Soccer_Attacking)
+	STATE ( "Soccer_Defending",			rvMonsterLightTank::State_Soccer_Defending)
+	STATE ( "Soccer_Shooting",			rvMonsterLightTank::State_Soccer_Shooting)
+	STATE ( "Soccer_Dribbling",			rvMonsterLightTank::State_Soccer_Dribbling)
+	STATE ( "Soccer_Passing",			rvMonsterLightTank::State_Soccer_Passing)
 	
 END_CLASS_STATES
 
@@ -611,4 +626,94 @@ stateResult_t rvMonsterLightTank::State_Torso_PowerUp ( const stateParms_t& parm
 			return SRESULT_WAIT;
 	}
 	return SRESULT_ERROR; 
+}
+/*
+================
+rvMonsterLightTank::State_Soccer_Running
+================
+*/
+stateResult_t rvMonsterLightTank::State_Soccer_Running(const stateParms_t& parms) {
+	enum {
+		STAGE_START,
+		STAGE_START_WAIT,
+		STAGE_LOOP,
+		STAGE_FINISH,
+	};
+	gameLocal.Printf("speed");
+	return SRESULT_STAGE(STAGE_FINISH);
+}
+/*
+================
+rvMonsterLightTank::State_Soccer_Attacking
+================
+*/
+stateResult_t rvMonsterLightTank::State_Soccer_Attacking(const stateParms_t& parms) {
+	enum {
+		STAGE_START,
+		STAGE_START_WAIT,
+		STAGE_LOOP,
+		STAGE_FINISH,
+	}; 
+	gameLocal.Printf("attaack");
+	return SRESULT_STAGE(STAGE_FINISH);
+}
+/*
+================
+rvMonsterLightTank::State_Soccer_Defending
+================
+*/
+stateResult_t rvMonsterLightTank::State_Soccer_Defending(const stateParms_t& parms) {
+	enum {
+		STAGE_START,
+		STAGE_START_WAIT,
+		STAGE_LOOP,
+		STAGE_FINISH,
+	}; 
+	gameLocal.Printf("defend");
+	return SRESULT_STAGE(STAGE_FINISH);
+}
+/*
+================
+rvMonsterLightTank::State_Soccer_Shooting
+================
+*/
+stateResult_t rvMonsterLightTank::State_Soccer_Shooting(const stateParms_t& parms) {
+	enum {
+		STAGE_START,
+		STAGE_START_WAIT,
+		STAGE_LOOP,
+		STAGE_FINISH,
+	}; 
+	gameLocal.Printf("shoot");
+	return SRESULT_STAGE(STAGE_FINISH);
+}
+/*
+================
+rvMonsterLightTank::State_Soccer_Dribbling
+================
+*/
+stateResult_t rvMonsterLightTank::State_Soccer_Dribbling(const stateParms_t& parms) {
+	enum {
+		STAGE_START,
+		STAGE_START_WAIT,
+		STAGE_LOOP,
+		STAGE_FINISH,
+	}; 
+	gameLocal.Printf("dribble");
+	return SRESULT_STAGE(STAGE_FINISH);
+}
+/*
+================
+rvMonsterLightTank::State_Soccer_Passing
+================
+*/
+stateResult_t rvMonsterLightTank::State_Soccer_Passing(const stateParms_t& parms) {
+	enum {
+		STAGE_START,
+		STAGE_START_WAIT,
+		STAGE_LOOP,
+		STAGE_FINISH,
+	}; 
+	gameLocal.Printf("pass");
+	return SRESULT_STAGE(STAGE_FINISH);
 }
