@@ -343,6 +343,7 @@ public:
 	
 	idUserInterface *		objectiveSystem;
 	idUserInterface *		cinematicHud;
+	//idUserInterface			*playerRecruit;
 	bool					objectiveSystemOpen;
 	bool					objectiveButtonReleased;
 	bool					disableHud;
@@ -369,6 +370,8 @@ public:
 // squirrel: Mode-agnostic buymenus
 	bool					inBuyZone;
 	bool					inBuyZonePrev;
+
+	//bool					recruitPage;
 // RITUAL END
 	bool					spectating;
 	bool					lastHitToggle;
@@ -459,6 +462,9 @@ public:
 
  	bool					UserInfoChanged( void );
 	idDict *				GetUserInfo( void );
+
+	void OpenPlayerRecruit(void);
+
 // RAVEN BEGIN
 // shouchard:  BalanceTDM->BalanceTeam (now used for CTF as well as TDM)
 	bool					BalanceTeam( void );

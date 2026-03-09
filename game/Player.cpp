@@ -1132,6 +1132,7 @@ idPlayer::idPlayer() {
 // squirrel: Mode-agnostic buymenus
 	inBuyZone				= false;
 	inBuyZonePrev			= false;
+
 // RITUAL END
 	spectating				= false;
 	spectator				= 0;
@@ -14078,3 +14079,33 @@ int idPlayer::CanSelectWeapon(const char* weaponName)
 }
 
 // RITUAL END
+/*
+================
+OpenPlayerRecruit
+================
+*/
+void idPlayer::OpenPlayerRecruit(void)
+{
+	// Buy menu work in progress
+	//if ( gameLocal.mpGame.GetCurrentMenu() == 4 )
+	//{	
+	//		return;
+	//}
+	/*
+	try {
+		hud->HandleNamedEvent("toggleRecruit");
+		
+		//recruitPage = !recruitPage;
+	}
+	catch (std::exception  e) {
+		gameLocal.Printf("%s", e);
+	}*/
+	if (hud) {
+		hud->HandleNamedEvent("toggleRecruit");
+		gameLocal.Printf("proof of life");
+	}
+	else {
+		gameLocal.Printf("nothing");
+	}
+	
+}

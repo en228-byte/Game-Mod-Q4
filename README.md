@@ -9,7 +9,7 @@ Features:
       README in instructions (complete for now)
       Shortcut to auto launch mod (complete)
       .pak file with all custom assets
-      In game help screen to explain mod
+      In game help screen to explain mod (complete)
       custom UI to support mod features
     Personal Deliverables
       Working/interactable soccer ball and goals
@@ -19,4 +19,5 @@ Features:
       Level Progression
       
 Instructions:
-NA
+-Go to the pause menu/settings and press the Blue Lock button to see the in game help screen
+-Press H to activate the player recruit screen where you can see player stats (or steal a player after winning a match - to be implemented)

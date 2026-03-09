@@ -2949,12 +2949,14 @@ void Cmd_ToggleBuyMenu_f( const idCmdArgs& args ) {
 		gameLocal.mpGame.OpenLocalBuyMenu();
 	}
 }
-void Cmd_ToggleModHelp_f(const idCmdArgs& args) {
+void Cmd_TogglePlayerRecruit_f(const idCmdArgs& args) {
 	idPlayer* player = gameLocal.GetLocalPlayer();
+
 	if (!player) {
 		return;
 	}
-		gameLocal.OpenModHelp();
+
+	player->OpenPlayerRecruit();
 }
 
 void Cmd_BuyItem_f( const idCmdArgs& args ) {
@@ -3104,7 +3106,7 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "setviewpos",			Cmd_SetViewpos_f,			CMD_FL_GAME|CMD_FL_CHEAT,	"sets the current view position" );
 	cmdSystem->AddCommand( "teleport",				Cmd_Teleport_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"teleports the player to an entity location", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "locate",				Cmd_Locate_f,				CMD_FL_GAME,				"get player location", idGameLocal::ArgCompletion_EntityName );
-	cmdSystem->AddCommand( "getHelp",				Cmd_ToggleModHelp_f,			CMD_FL_GAME,				"opens up a help screen for the Blue Lock mod");
+	cmdSystem->AddCommand( "playerRecruit",			Cmd_TogglePlayerRecruit_f,	CMD_FL_GAME,				"opens up a player recruit screen for the Blue Lock mod");
 	cmdSystem->AddCommand( "trigger",				Cmd_Trigger_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"triggers an entity", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "spawn",					Cmd_Spawn_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"spawns a game entity", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF> );
 	cmdSystem->AddCommand( "damage",				Cmd_Damage_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"apply damage to an entity", idGameLocal::ArgCompletion_EntityName );
