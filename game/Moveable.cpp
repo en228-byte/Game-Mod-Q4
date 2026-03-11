@@ -26,7 +26,8 @@ const idEventDef EV_IsAtRest( "isAtRest", NULL, 'd' );
 const idEventDef EV_CanDamage( "canDamage", "f" );
 const idEventDef EV_SetHealth( "setHealth", "f" );
 const idEventDef EV_RadiusDamage( "<radiusDamage>", "es" );
-const idEventDef EV_SoccerBall("soccerBall");
+const idEventDef EV_Goal("goal");
+//const idEventDef EV_SoccerBall("soccerBall");
 
 CLASS_DECLARATION( idDamagable, idMoveable )
 	EVENT( EV_Activate,					idMoveable::Event_Activate )
@@ -36,7 +37,8 @@ CLASS_DECLARATION( idDamagable, idMoveable )
 	EVENT( EV_CanDamage,				idMoveable::Event_CanDamage )
 	EVENT( EV_SetHealth,				idMoveable::Event_SetHealth )
 	EVENT( EV_RadiusDamage,				idMoveable::Event_RadiusDamage )
-	EVENT( EV_SoccerBall,				idMoveable::Event_SoccerBall)
+	EVENT (EV_Goal,						idMoveable::Event_Goal)
+	//EVENT( EV_SoccerBall,				idMoveable::Event_SoccerBall)
 END_CLASS
 
 static const float BOUNCE_SOUND_MIN_VELOCITY	= 80.0f;
@@ -60,6 +62,7 @@ idMoveable::idMoveable( void ) {
  	canDamage			= false;
 	
 	lastAttacker		= NULL;
+
 }
 
 /*
@@ -139,6 +142,10 @@ void idMoveable::Spawn( void ) {
 
 	damage = spawnArgs.GetString( "def_damage", "" );
 	canDamage = spawnArgs.GetBool( "damageWhenActive" ) ? false : true;
+	isSoccerBall = spawnArgs.GetBool("soccerBall") ? true : false;
+	makingGoal = false;
+	homePoints = 0;
+	awayPoints = 0;
 	health = spawnArgs.GetInt( "health", "0" );
 	spawnArgs.GetString( "broken", "", brokenModel );
 
@@ -314,9 +321,9 @@ bool idMoveable::Collide( const trace_t &collision, const idVec3 &velocity ) {
 			nextCollideFxTime = gameLocal.time + BOUNCE_SOUND_DELAY_MIN + gameLocal.random.RandomInt(BOUNCE_SOUND_DELAY_MAX - BOUNCE_SOUND_DELAY_MIN);
 		}
 	}
-
+	ent = gameLocal.entities[collision.c.entityNum];
 	if ( canDamage && damage.Length() ) {
-		ent = gameLocal.entities[ collision.c.entityNum ];
+		//colWith = ent;
 		if ( ent && len > minDamageVelocity ) {
 // RAVEN BEGIN
 // jscott: fixed negative sqrt call
@@ -331,7 +338,16 @@ bool idMoveable::Collide( const trace_t &collision, const idVec3 &velocity ) {
 			ent->Damage( this, GetPhysics()->GetClipModel()->GetOwner(), dir, damage, f, INVALID_JOINT );
 		}
 	}
-
+	idStr g1 = "goal1";
+	idStr g2 = "goal2";
+	if (ent){
+	if (isSoccerBall) {
+		idStr name = ent->GetName();
+		if (name == "goal1" || name == "goal2") {
+			Event_Goal(ent);
+		}
+	}
+	}
 	return false;
 }
 
@@ -475,7 +491,7 @@ idMoveable::SoccerBall
 void idMoveable::SoccerBall(void) {
 	//physicsObj.SetBouncyness(10);
 	//physicsObj.SetMass()
-
+	
 }
 
 /*
@@ -695,11 +711,34 @@ void idMoveable::Event_RadiusDamage( idEntity *attacker, const char* splash ) {
 }
 /*
 ================
-idMoveable::Event_SoccerBall
+idMoveable::Event_Goal
 ================
 */
-void idMoveable::Event_SoccerBall(void) {
-	return;
+void idMoveable::Event_Goal(idEntity *whichGoal) {
+	//reset ball pos
+	idVec3 reset = idVec3(9663.5, - 8400, 195);
+	this->SetOrigin(reset);
+	idPlayer *player = gameLocal.GetLocalPlayer();
+
+	//award point to correct team based on which goal was hit
+	idStr name = whichGoal->GetName();
+	if (!makingGoal) {
+		if (name == "goal1") {
+			homePoints++;
+			gameLocal.Printf("+1 home\n");
+			player->hud->SetStateInt("homeScore", homePoints);
+			//player->hud->HandleNamedEvent("updateScore");
+		}
+		else if (name == "goal2") {
+			awayPoints++;
+			gameLocal.Printf("+1 away\n");
+			player->hud->SetStateInt("awayScore", awayPoints);
+			//player->hud->SetStateInt("%d", awayPoints);
+		}
+		makingGoal = true;
+	}
+	gameLocal.Printf("Home: %d \b Away: %d\n", homePoints, awayPoints);
+	makingGoal = false;
 }
 
 /*

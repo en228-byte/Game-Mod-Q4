@@ -57,6 +57,11 @@ protected:
 	bool					unbindOnDeath;			// unbind from master when health drops down to or below zero
 	bool					allowStep;				// allow monsters to step on the object
 	bool					canDamage;				// only apply damage when this is set
+	bool					isSoccerBall;
+	bool					makingGoal;
+	int					homePoints;
+	int					awayPoints;
+
 
 	idEntityPtr<idEntity>	lastAttacker;
 
@@ -75,7 +80,7 @@ protected:
 	void					Event_CanDamage ( float enable );
 	void					Event_SetHealth ( float newHealth );
 	void					Event_RadiusDamage( idEntity *attacker, const char* splash );
-	void					Event_SoccerBall(void);
+	void					Event_Goal(idEntity *whichGoal);
 };
 
 

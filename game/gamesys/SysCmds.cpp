@@ -1130,40 +1130,40 @@ void Cmd_Trigger_f( const idCmdArgs &args ) {
 Cmd_Spawn_f
 ===================
 */
-void Cmd_Spawn_f( const idCmdArgs &args ) {
+void Cmd_Spawn_f(const idCmdArgs& args) {
 #ifndef _MPBETA
-	const char *key, *value;
+	const char* key, * value;
 	int			i;
 	float		yaw;
 	idVec3		org;
-	idPlayer	*player;
+	idPlayer* player;
 	idDict		dict;
 
 	player = gameLocal.GetLocalPlayer();
-	if ( !player || !gameLocal.CheatsOk( false ) ) {
+	if (!player || !gameLocal.CheatsOk(false)) {
 		return;
 	}
 
-	if ( args.Argc() & 1 ) {	// must always have an even number of arguments
-		gameLocal.Printf( "usage: spawn classname [key/value pairs]\n" );
+	if (args.Argc() & 1) {	// must always have an even number of arguments
+		gameLocal.Printf("usage: spawn classname [key/value pairs]\n");
 		return;
 	}
 
 	yaw = player->viewAngles.yaw;
 
-	value = args.Argv( 1 );
-	dict.Set( "classname", value );
-	dict.Set( "angle", va( "%f", yaw + 180 ) );
+	value = args.Argv(1);
+	dict.Set("classname", value);
+	dict.Set("angle", va("%f", yaw + 180));
 
-	org = player->GetPhysics()->GetOrigin() + idAngles( 0, yaw, 0 ).ToForward() * 80 + idVec3( 0, 0, 1 );
-	dict.Set( "origin", org.ToString() );
+	org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
+	dict.Set("origin", org.ToString());
 
-	for( i = 2; i < args.Argc() - 1; i += 2 ) {
+	for (i = 2; i < args.Argc() - 1; i += 2) {
 
-		key = args.Argv( i );
-		value = args.Argv( i + 1 );
+		key = args.Argv(i);
+		value = args.Argv(i + 1);
 
-		dict.Set( key, value );
+		dict.Set(key, value);
 	}
 
 // RAVEN BEGIN
@@ -2958,6 +2958,15 @@ void Cmd_TogglePlayerRecruit_f(const idCmdArgs& args) {
 
 	player->OpenPlayerRecruit();
 }
+void Cmd_startSoccer_f(const idCmdArgs& args) {
+	idPlayer* player = gameLocal.GetLocalPlayer();
+
+	if (!player) {
+		return;
+	}
+
+	player->startSoccer();
+}
 
 void Cmd_BuyItem_f( const idCmdArgs& args ) {
 	idPlayer* player = gameLocal.GetLocalPlayer();
@@ -3107,8 +3116,9 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "teleport",				Cmd_Teleport_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"teleports the player to an entity location", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "locate",				Cmd_Locate_f,				CMD_FL_GAME,				"get player location", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "playerRecruit",			Cmd_TogglePlayerRecruit_f,	CMD_FL_GAME,				"opens up a player recruit screen for the Blue Lock mod");
+	cmdSystem->AddCommand( "startSoccer",			Cmd_startSoccer_f,			CMD_FL_GAME,				"spawn goals, teams, and give stats");
 	cmdSystem->AddCommand( "trigger",				Cmd_Trigger_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"triggers an entity", idGameLocal::ArgCompletion_EntityName );
-	cmdSystem->AddCommand( "spawn",					Cmd_Spawn_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"spawns a game entity", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF> );
+	cmdSystem->AddCommand( "spawn",					Cmd_Spawn_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"spawns a game entity", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF>);
 	cmdSystem->AddCommand( "damage",				Cmd_Damage_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"apply damage to an entity", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "remove",				Cmd_Remove_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"removes an entity", idGameLocal::ArgCompletion_EntityName );
 	cmdSystem->AddCommand( "killMonsters",			Cmd_KillMonsters_f,			CMD_FL_GAME|CMD_FL_CHEAT,	"removes all monsters" );

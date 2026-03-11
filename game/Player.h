@@ -343,7 +343,6 @@ public:
 	
 	idUserInterface *		objectiveSystem;
 	idUserInterface *		cinematicHud;
-	//idUserInterface			*playerRecruit;
 	bool					objectiveSystemOpen;
 	bool					objectiveButtonReleased;
 	bool					disableHud;
@@ -371,7 +370,6 @@ public:
 	bool					inBuyZone;
 	bool					inBuyZonePrev;
 
-	//bool					recruitPage;
 // RITUAL END
 	bool					spectating;
 	bool					lastHitToggle;
@@ -464,6 +462,8 @@ public:
 	idDict *				GetUserInfo( void );
 
 	void OpenPlayerRecruit(void);
+	void startSoccer(void);
+	void getGoal(int home, int away);
 
 // RAVEN BEGIN
 // shouchard:  BalanceTDM->BalanceTeam (now used for CTF as well as TDM)

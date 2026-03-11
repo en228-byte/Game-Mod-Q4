@@ -283,6 +283,7 @@ extern idCVar	g_simpleItems;
 extern idCVar	g_showHud;
 //blue lock
 extern idCVar	showRecruitPage;
+extern idCVar	showStartSoccer;
 // RAVEN BEGIN
 extern idCVar	g_crosshairColor;
 // cnicholson: Custom Crosshair 

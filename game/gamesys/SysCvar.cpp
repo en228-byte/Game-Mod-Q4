@@ -457,6 +457,7 @@ idCVar g_skipItemShadowsMP(			"g_skipItemShadowsMP",		"0",			CVAR_GAME | PC_CVAR
 idCVar g_simpleItems(				"g_simpleItems",			"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "render icon representations of items instead of the actual model" );
 idCVar g_showHud(					"g_showHud",				"1",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "" );
 idCVar showRecruitPage(				"showRecruitPage",			"0",			CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "When set to 1 shows the player recruit page");
+idCVar showStartSoccer(				"showStartSoccer",			"1",			CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "show the start button only when time");
 idCVar g_showProjectilePct(			"g_showProjectilePct",		"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "enables display of player hit percentage" );
 // RAVEN BEGIN
 // dluetscher: changed to g_brassTime

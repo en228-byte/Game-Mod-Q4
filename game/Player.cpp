@@ -1086,6 +1086,8 @@ idPlayer::idPlayer() {
 	godmode					= false;
 	undying					= g_forceUndying.GetBool() ? !gameLocal.isMultiplayer : false;
 
+	//mod
+
 	spawnAnglesSet			= false;
 	spawnAngles				= ang_zero;
 	viewAngles				= ang_zero;
@@ -14102,10 +14104,33 @@ void idPlayer::OpenPlayerRecruit(void)
 	}*/
 	if (hud) {
 		hud->HandleNamedEvent("toggleRecruit");
-		gameLocal.Printf("proof of life");
+		gameLocal.Printf("proof of life recruit screen");
 	}
 	else {
-		gameLocal.Printf("nothing");
+		gameLocal.Printf("no recruit");
 	}
 	
+}
+/*
+================
+startSoccer
+================
+*/
+void idPlayer::startSoccer(void)
+{
+	hud->HandleNamedEvent("toggleStartSoccer");
+	gameLocal.Printf("start soccer");
+	//spawn cmd for 2 goals
+	//spawn cmd for 1 teammate 2 enemies
+}
+/*
+================
+getGoal
+================
+*/
+void idPlayer::getGoal(int home, int away)
+{
+	hud->HandleNamedEvent("updateScore");
+	gameLocal.Printf("updatingScore\n");
+	//gameLocal.Printf("NOT updatingScore\n");
 }
