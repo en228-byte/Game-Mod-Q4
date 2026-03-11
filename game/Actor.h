@@ -58,7 +58,6 @@ extern const idEventDef	AI_JumpDown;
 extern const idEventDef AI_SetLeader;
 // RAVEN END
 
-extern const idEventDef EV_SetSoccerStats;
 
 class idAnimState {
 public:
@@ -416,7 +415,6 @@ private:
 	void					Event_DamageOverTime ( int endTime, int interval, idEntity *inflictor, idEntity *attacker, idVec3 &dir, const char *damageDefName, const float damageScale, int location );
 	virtual void			Event_DamageOverTimeEffect	( int endTime, int interval, const char *damageDefName );
 	void					Event_JointCrawlEffect ( const char *effectKeyName, float crawlSecs );
-	void					Event_SetSoccerStats	( void );
 
 	CLASS_STATES_PROTOTYPE ( idActor );
 

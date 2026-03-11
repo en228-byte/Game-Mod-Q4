@@ -18,6 +18,7 @@ public:
 	virtual bool		Pain							( idEntity *inflictor, idEntity *attacker, int damage, const idVec3 &dir, int location );
 	virtual int			GetDamageForLocation			( int damage, int location );
 	virtual void		DamageFeedback					( idEntity *victim, idEntity *inflictor, int &damage );
+	void				getStats						( void );
 
 protected:
 
@@ -68,6 +69,22 @@ private:
 	stateResult_t		State_Soccer_Dribbling					( const stateParms_t& parms );
 	stateResult_t		State_Soccer_Passing					( const stateParms_t& parms );
 
+	//soccer stats. floats from 0.00 to 1.00
+	/*
+		runspeed = run speed
+		offense = rate of trying  to take ball
+		defense = rate of trying to block shots
+		passing = rate of passing to teammate
+		shooting = likelyhood to shoot
+		dribbling = skill at keeping ball
+	*/
+	float runSpeed;
+	float offense;
+	float defense;
+	float passing;
+	float shooting;
+	float dribbling;
+
 	rvScriptFuncUtility		mPostWeaponDestroyed;		// script to run after flamethrower is destroyed
 
 	CLASS_STATES_PROTOTYPE ( rvMonsterLightTank );
@@ -109,8 +126,24 @@ void rvMonsterLightTank::Spawn ( void ) {
 	const char  *func;
 	mPostWeaponDestroyed.Init(func);
 	*/
+	runSpeed = rand() % 101 / 100.00;
+	offense = rand() % 101 / 100.00;
+	defense = rand() % 101 / 100.00;
+	shooting = rand() % 101 / 100.00;
+	dribbling = rand() % 101 / 100.00;
+	passing = rand() % 101 / 100.00;
+	gameLocal.Printf("Stats: r-%f, o-%f, d-%f, s-%f, d-%f, p-%f", runSpeed, offense, defense, shooting, dribbling, passing);
 }
+/*
+================
+rvMonsterLightTank::getStats()
+================
+*/
+void rvMonsterLightTank::getStats(void) {
+	idPlayer* player = gameLocal.GetLocalPlayer();
 
+	//player->hud->SetStateInt("homeScore", homePoints);
+}
 /*
 ================
 rvMonsterLightTank::Save
